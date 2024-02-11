@@ -14,7 +14,7 @@ COPY . /app
 # Install any needed packages specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-RUN python3 manage.py collectstatic --no-input
+# RUN python3 manage.py collectstatic --no-input
 
 # Apply Django migrations
 # RUN python manage.py makemigrations
