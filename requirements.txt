@@ -15,6 +15,7 @@ djangorestframework==3.14.0
 djangorestframework-simplejwt==5.3.0
 drf-yasg==1.21.7
 Faker==20.1.0
+gunicorn==21.2.0
 idna==3.4
 inflection==0.5.1
 iniconfig==2.0.0
