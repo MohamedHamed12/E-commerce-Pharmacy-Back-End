@@ -24,7 +24,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
-          file: Dockerfile.django  # Use separate Dockerfiles for each image
+          file: Dockerfile  # Use separate Dockerfiles for each image
           push: true
           tags:  ${{ secrets.DOCKERHUB_USERNAME }}/graduation:v2  # Customize image names
         #   build-args: DJANGO_SETTINGS_MODULE=${{ secrets.DJANGO_SETTINGS_MODULE }}  # Inject secret environment variable
