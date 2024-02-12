@@ -346,7 +346,7 @@ else:
 
     }   
 
-CSRF_TRUSTED_ORIGINS =['https://ikseer.azurewebsites.net','ikseer2.azurewebsites.net']
+CSRF_TRUSTED_ORIGINS =['https://ikseer.azurewebsites.net','https://ikseer2.azurewebsites.net']
 from datetime import timedelta
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(days=20),  # Short expiration for security
