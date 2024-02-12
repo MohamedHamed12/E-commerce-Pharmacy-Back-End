@@ -27,5 +27,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 8000
 
 # Define the command to run your django project
+
 # CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "project.wsgi"]
+# CMD ["gunicorn", "--bind", "0.0.0.0:8000", "project.wsgi"]
+#  gunicorn project.wsgi:application -c gunicorn_config.py    
+CMD ["gunicorn" , "project.wsgi:application", "-c" , "gunicorn_config.py"]
