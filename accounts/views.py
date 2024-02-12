@@ -193,6 +193,7 @@ class PhoneRegister(GenericAPIView):
                 Mobile=phone,
             )
             Mobile = PhoneModel.objects.get(Mobile=phone)  # user Newly created Model
+        Mobile.user = request.user
         Mobile.save()  # Save the data
         keygen = generateKey()
         key = base64.b32encode(keygen.returnValue(phone).encode())  # Key is generated

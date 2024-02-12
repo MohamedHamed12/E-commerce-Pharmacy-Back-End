@@ -48,20 +48,17 @@ class UserTest(APITestCase):
 
     def test_email_confirmation(self):
         self.test_registration()
-
-        
         st=mail.outbox[-1].body.find(":")+1
         otp=mail.outbox[-1].body[st:].strip()
         url=reverse('verify-email-otp' )
-        # self.client.post(url,{'otp':otp})
-
         response=self.client.post(url ,{'otp':otp})
-        # user= User.objects.get(email=self.data['email'])
-        # ser=UserDetailsSerializer(user)
-        # print(ser.data )
-        # print(response.data)
-        # print(response.data)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
+        access=response.data['access']
+        url=reverse('token_verify')
+        response=self.client.post(url,{'token':access})
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        
     def test_login_confirmed_email(self):
         self.test_email_confirmation()
         url = reverse('rest_login')
