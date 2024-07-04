@@ -17,6 +17,10 @@ use_cache=config('use_cache',0)
 class WishlistViewSet(viewsets.ModelViewSet):
     queryset = Wishlist.objects.all()
     serializer_class = WishlistSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated,WishlistPermission]
     filterset_class = WishlistFilter
     pagination_class = ProductPagination
+    def list(self, request, *args, **kwargs):
+        if not self.request.user.is_staff:
+            self.queryset= Wishlist.objects.filter(user=self.request.user)
+        return super().list(request, *args, **kwargs)
