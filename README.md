@@ -1,6 +1,21 @@
 # E-commerce Smart Pharmacy
 
-### db
+
+## General Links
+
+- [Swagger](https://ikseer.azurewebsites.net/swagger/)
+- [Database](https://dbdiagram.io/d/phar-6686b3939939893dae0fde8a)
+- [Linear Link](https://linear.app/iksirs/team/SOFT/all)
+
+
+### Front End
+| App             | Deployment status                                                                                                                                                 | Link                             |
+| --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
+| Ikseer          | [![Netlify Status](https://api.netlify.com/api/v1/badges/1cc24593-7229-46c0-8563-364fb9ccb9c0/deploy-status)](https://app.netlify.com/sites/ikseer/deploys)       |https://ikseer.vercel.app      |
+| Admin dashboard | [![Netlify Status](https://api.netlify.com/api/v1/badges/04482d2b-b30b-4ecd-8d72-8ce841906da3/deploy-status)](https://app.netlify.com/sites/ikseer-admin/deploys) | https://ikseer-admin.netlify.app |
+
+
+### Database
 
 ![alt text](design/database/db.png)
 
