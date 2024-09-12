@@ -37,6 +37,8 @@ E-commerce Smart Pharmacy is a web application built using Django Rest Framework
 - Prescription Handling: Users can upload prescriptions, which include details like patient name, doctor, medication, quantity, and total price.
 - Order Management: Users can place orders for products and track their order history.
 - Authentication and Authorization: Implemented authentication mechanisms to ensure secure access to the application's functionalities.
+- File Management: Integrated with Dropbox for handling and storing files securely.
+- Secure Payments: Integrated secure payment processing with Paymob 
 
 ## Technologies Used
 
