@@ -42,7 +42,7 @@ class OtpByEmailView(GenericAPIView):
                 )
 
 
-            SendEmail.send_otp(user)
+            EmailService.send_otp_email(user)
             return Response(
                 {"detail": "OTP sent to your email"}, status=status.HTTP_200_OK
             )
@@ -59,7 +59,7 @@ class VerifyEmailOtpView(GenericAPIView):
         if serializer.is_valid():
             otp = serializer.validated_data["otp"]
 
-            user = Otp.verify_otp(otp)
+            user = OtpService.verify_otp(otp)
             if not user:
                 return Response(
                     {"detail": "Invalid OTP"}, status=status.HTTP_400_BAD_REQUEST
