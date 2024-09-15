@@ -1,7 +1,4 @@
-
-
 # -*- coding: utf-8 -*-
-
 from accounts.filters import *
 from accounts.models import *
 from accounts.serializers import *
@@ -18,11 +15,6 @@ from rest_framework import status
 from rest_framework.generics import GenericAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-
-# -*- coding: utf-8 -*-
-
-
-
 
 
 class CustomRegisterView(RegisterView):
@@ -48,7 +40,7 @@ class CustomRegisterView(RegisterView):
 
 
 
-        SendEmail.send_otp(user)
+        EmailService.send_otp_email(user)
         return Response({"detail": "Verify your email"}, status=status.HTTP_201_CREATED)
 
 
