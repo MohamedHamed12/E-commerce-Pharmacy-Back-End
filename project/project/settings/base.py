@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
+
 import os
 from datetime import timedelta
 from pathlib import Path
@@ -23,8 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-5^31#!z1k!=(+*w7g+&qjw#in1sb7!(2bc7bsf(7kciy0_35@y"
+# SECURITY WARNING: keep the django-insecure-5^31#!z1k!=(+*w7g+&qjw#in1sb7!(2bc7bsf(7kciy0_35@ysecret key used in production secret!
+SECRET_KEY = config("SECRET_KEY")
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
@@ -81,9 +83,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     # allauth
     "allauth.account.middleware.AccountMiddleware",
-
-    "django.middleware.locale.LocaleMiddleware"
-
+    "django.middleware.locale.LocaleMiddleware",
 ]
 
 ROOT_URLCONF = "project.urls"
@@ -106,20 +106,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "project.wsgi.application"
 
-
-# Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
-
-# Password validation
-# https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     # {
@@ -149,14 +135,6 @@ USE_I18N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.2/howto/static-files/
-
-# STATIC_URL = 'static/'
-
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
-
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
@@ -172,13 +150,6 @@ REST_FRAMEWORK = {
         "rest_framework.filters.SearchFilter",
         "rest_framework.filters.OrderingFilter",
     ),
-    # 'DEFAULT_THROTTLE_RATES': {
-    #     'anon': '100/day',
-    #     'user': '1000/day',
-    # },
-    # 'DEFAULT_CACHE_BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
-    # 'DEFAULT_CACHE_TIMEOUT': 60 * 15,  # Cache timeout of 15 minutes
-
 }
 
 
@@ -201,8 +172,8 @@ SITE_NAME = "Backend"
 ##### EMAIL ######
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
-EMAIL_HOST_USER = "backendbackend90@gmail.com"
-EMAIL_HOST_PASSWORD = "fkgkonllykbobfin"
+EMAIL_HOST_USER = config("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD")
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
@@ -213,9 +184,7 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 ####### REST_AUTH #######
-# REST_AUTH_REGISTER_SERIALIZERS = {
-#       'REGISTER_SERIALIZER': 'accounts.serializers.CustomRegistration',
-# }
+
 REST_AUTH = {"USE_JWT": True, "JWT_AUTH_HTTPONLY": False}
 
 ####### swagger #######
@@ -231,31 +200,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles_build", "static")
 
 
 ###### database #######
-# settings.py
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'postgres',
-#         'USER': 'postgres',
-#         'PASSWORD': 'pr0oject123',
-#         'HOST': 'db.lxuthyjpwmolmdwrzaug.supabase.co',
-#         'PORT': '5432',
-#     }
-# }
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'postgres',
-#         'USER': 'postgres.lxuthyjpwmolmdwrzaug',
-#         'PASSWORD': 'pr0oject123',
-#         'HOST': 'aws-0-ap-southeast-2.pooler.supabase.com',
-#         'PORT': '5432',
-#         'TEST': {
-#             'NAME': 'test_postgres',
-#         },
-#     }
-# }
 
 ###### Media #######
 MEDIA_URL = "/media/"
@@ -263,23 +207,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 
 ##### cors headers  #######
-# CORS_ORIGIN_ALLOW_ALL = True
-# CORS_ALLOW_CREDENTIALS = True
+
 CORS_ALLOW_HEADERS = ["*"]
 CORS_ORIGIN_ALLOW_ALL = True
-# CORS_ORIGIN_WHITELIST = ('http://localhost:3000',)
-# swagger settings
-# SWAGGER_SETTINGS = {
-#     'USE_SESSION_AUTH': False,
-#     'JSON_EDITOR': True,
-#     'SECURITY_DEFINITIONS': {
-#         'api_key': {
-#             'type': 'apiKey',
-#             'in': 'header',
-#             'name': 'Authorization',
-#         },
-#     },
-# }
+
 SWAGGER_URLS = None
 SWAGGER_SETTINGS = {
     "SECURITY_SCHEMES": {
@@ -288,38 +219,12 @@ SWAGGER_SETTINGS = {
 }
 
 
-# database=os.environ.get('POSTGRES_DB')
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'ikseer',
-#         'USER': 'ikseer_user',
-#         'PASSWORD': 'MuEeDvUoRQiRIsTVWt0qlINyO3UcOS43',
-#         'HOST': 'dpg-cmvsquol5elc73egclb0-a.oregon-postgres.render.com',
-#         'PORT': '5432',
-#         'TEST': {
-#             'NAME': 'my_testdatabase',
-#         },
-#     }
-# }
-# ?ssl=true
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'bkuvudfm',
-#         'USER': 'bkuvudfm',
-#         'PASSWORD': 'cAwqKjn8YaiSlSkKnrZdJ70q6_egpeUq',
-#         'HOST': 'snuffleupagus.db.elephantsql.com',
-#         'PORT': '5432',
-#         'TEST': {
-#             'NAME': 'my_testdatabase',
-#         },
-#     }
-# }
-
-
-CSRF_TRUSTED_ORIGINS = ["https://ikseer.azurewebsites.net","https://ikseer.onrender.com","https://ikseer2.azurewebsites.net"]
+#
+CSRF_TRUSTED_ORIGINS = [
+    "https://ikseer.azurewebsites.net",
+    "https://ikseer.onrender.com",
+    "https://ikseer2.azurewebsites.net",
+]
 
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(days=20),  # Short expiration for security
@@ -329,81 +234,48 @@ SIMPLE_JWT = {
 AUTH_USER_MODEL = "accounts.CustomUser"
 
 
-
-
 ### CACHING ###
 # settings.py
 CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
-        'LOCATION': os.path.join(BASE_DIR, 'django_cache'),
+    "default": {
+        "BACKEND": "django.core.cache.backends.filebased.FileBasedCache",
+        "LOCATION": os.path.join(BASE_DIR, "django_cache"),
     }
 }
 
-# settings.py
-# ATOMIC_REQUESTS = True
 
+DROPBOX_APP_KEY = config("DROPBOX_APP_KEY")
+DROPBOX_APP_SECRET = config("DROPBOX_APP_SECRET")
 
-# SWAGGER_SETTINGS = {
-#     'SECURITY_DEFINITIONS': {
-#         'Bearer': {
-#             'type': 'apiKey',
-#             'name': 'Authorization',
-#             'in': 'header'
-#         }
-#     }
-# }
-
-DROPBOX_APP_KEY=config('DROPBOX_APP_KEY')
-DROPBOX_APP_SECRET=config('DROPBOX_APP_SECRET')
-
-INSTALLED_APPS += (
-    'storages',
-
-)
+INSTALLED_APPS += ("storages",)
 STORAGES = {
     "default": {
         "BACKEND": "storages.backends.dropbox.DropboxStorage",
-        "OPTIONS": {
-
-        },
-
+        "OPTIONS": {},
     },
-   "staticfiles": {
+    "staticfiles": {
         "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
     },
 }
 
-DROPBOX_OAUTH2_REFRESH_TOKEN= config('DROPBOX_OAUTH2_REFRESH_TOKEN')
-
-
+DROPBOX_OAUTH2_REFRESH_TOKEN = config("DROPBOX_OAUTH2_REFRESH_TOKEN")
 
 
 # REGISTER_SERIALIZER="accounts.serializers.RegistrationSerializerSettings"
 
-# LANGUAGES = [
-#     ('en', 'English'),
-#     ('ar', 'Arabic'),
-# ]
-# LOCALE_PATHS = [
-#     os.path.join(BASE_DIR, 'locale'),  # Directory where Django should look for translation files
-# ]
-
-
 LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'console': {
-            'class': 'logging.StreamHandler',
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
         },
     },
-    'root': {
-        'handlers': ['console'],
-        'level': 'DEBUG',
+    "root": {
+        "handlers": ["console"],
+        "level": "DEBUG",
     },
 }
-
 
 
 # Time after which OTP will expire
@@ -412,9 +284,9 @@ EXPIRY_TIME = 120  # seconds
 SOCIALACCOUNT_PROVIDERS = {
     "google": {
         "APP": {
-            "client_id": config("gclient_id",''),  # replace me
-            "secret":config('gsecret','') ,        # replace me
-            "key": "",                               # leave empty
+            "client_id": config("gclient_id", ""),  # replace me
+            "secret": config("gsecret", ""),  # replace me
+            "key": "",  # leave empty
         },
         "SCOPE": [
             "profile",
@@ -428,6 +300,5 @@ SOCIALACCOUNT_PROVIDERS = {
 }
 
 
-
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY =config("gclient_id",'')
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = config("gclient_id",'')
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = config("gclient_id", "")
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = config("gclient_id", "")
