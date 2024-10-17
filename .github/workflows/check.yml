@@ -59,6 +59,10 @@ jobs:
           echo "DROPBOX_APP_KEY=$DROPBOX_APP_KEY" >> $GITHUB_ENV
           echo "DROPBOX_APP_SECRET=$DROPBOX_APP_SECRET" >> $GITHUB_ENV
           echo "FIREBASE_ADMINSDK_JSON=$FIREBASE_ADMINSDK_JSON" >> $GITHUB_ENV
+          echo "SECRET_KEY=$SECRET_KEY" >> $GITHUB_ENV
+
+          echo "EMAIL_HOST_USER=$EMAIL_HOST_USER" >> $GITHUB_ENV
+          echo "EMAIL_HOST_PASSWORD=$EMAIL_HOST_PASSWORD" >> $GITHUB_ENV
 
       # - name: Prepare database
       #   run: |
