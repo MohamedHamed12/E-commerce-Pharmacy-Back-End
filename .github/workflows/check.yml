@@ -44,6 +44,10 @@ jobs:
           DROPBOX_APP_KEY: ${{ secrets.DROPBOX_APP_KEY }}
           DROPBOX_APP_SECRET: ${{ secrets.DROPBOX_APP_SECRET }}
           FIREBASE_ADMINSDK_JSON: ${{ secrets.FIREBASE_ADMINSDK_JSON }}
+          SECRET_KEY: ${{ secrets.SECRET_KEY }}
+
+          EMAIL_HOST_USER: ${{ secrets.EMAIL_HOST_USER }}
+          EMAIL_HOST_PASSWORD: ${{ secrets.EMAIL_HOST_PASSWORD }}
 
         run: |
           echo "DATABASE_NAME=$DATABASE_NAME" >> $GITHUB_ENV
